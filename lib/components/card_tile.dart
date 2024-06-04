@@ -4,16 +4,29 @@ import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:image_gallery_app/constants.dart';
 
 class CardTile extends StatelessWidget {
-  final int index;
+  final int imageIndex;
+  final double authorSize;
+  final double iconSize;
+  final double iconPadding;
+  final double aboutAuthorPadding;
+  final TextStyle authorStyle;
 
-  const CardTile({required this.index, super.key});
+  const CardTile({
+    super.key,
+    required this.imageIndex,
+    required this.authorSize,
+    required this.iconSize,
+    required this.iconPadding,
+    required this.aboutAuthorPadding,
+    required this.authorStyle,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/cake_0$index.png'),
+          image: AssetImage('assets/images/cake_0$imageIndex.png'),
           fit: BoxFit.cover,
         ),
         borderRadius: BorderRadius.circular(
@@ -32,7 +45,7 @@ class CardTile extends StatelessWidget {
               alignment: Alignment.topRight,
               child: Container(
                 padding: EdgeInsets.all(
-                  8.0,
+                  this.iconPadding,
                 ),
                 decoration: BoxDecoration(
                   color: heartBackground,
@@ -42,6 +55,8 @@ class CardTile extends StatelessWidget {
                 ),
                 child: SvgPicture.asset(
                   'assets/icons/heart_filled.svg',
+                  width: this.iconSize,
+                  height: this.iconSize,
                 ),
               ),
             ),
@@ -55,18 +70,21 @@ class CardTile extends StatelessWidget {
                 bottomRight: Radius.circular(12.0),
               ),
               child: Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(this.aboutAuthorPadding),
                 child: Row(
                   children: [
                     Image(
                       image: AssetImage('assets/images/author.png'),
+                      fit: BoxFit.cover,
+                      width: this.authorSize,
+                      height: this.authorSize,
                     ),
                     SizedBox(
                       width: 8.0,
                     ),
                     Text(
                       'Samantha Johnes',
-                      style: smallAuthorName,
+                      style: this.authorStyle,
                     ),
                   ],
                 ),

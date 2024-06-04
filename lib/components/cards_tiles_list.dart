@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_gallery_app/components/card_tile.dart';
+import 'package:image_gallery_app/constants.dart';
 
 class CardsTilesList extends StatelessWidget {
   const CardsTilesList({super.key});
@@ -17,7 +18,14 @@ class CardsTilesList extends StatelessWidget {
       ),
       itemCount: 4,
       itemBuilder: (context, index) {
-        return CardTile(index: index + 1);
+        return CardTile(
+          imageIndex: index + 1,
+          iconSize: 12.0,
+          iconPadding: 8.0,
+          authorSize: 24.0,
+          aboutAuthorPadding: 8.0,
+          authorStyle: smallAuthorName,
+        );
       },
     );
   }
