@@ -61,7 +61,7 @@ final TextStyle smallAuthorName = baseTextStyle.copyWith(
 
 final TextStyle mediumAuthorName = baseTextStyle.copyWith(
   fontSize: 16.0,
-  fontWeight: FontWeight.w600,
+  fontWeight: FontWeight.w500,
   color: primaryColors[400]!,
 );
 
