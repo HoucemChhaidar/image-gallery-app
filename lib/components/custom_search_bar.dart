@@ -21,23 +21,22 @@ class CustomSearchBar extends StatelessWidget {
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(
+        padding: EdgeInsets.symmetric(
           horizontal: 16.0,
           vertical: 20.0,
         ),
-        child: Row(
-          children: [
-            SvgPicture.asset(
+        child: TextField(
+          style: defaultText,
+          decoration: InputDecoration(
+            hintText: 'Search...',
+            hintStyle: inputPlaceholderText,
+            border: InputBorder.none,
+            icon: SvgPicture.asset(
               'assets/icons/search.svg',
             ),
-            SizedBox(
-              width: 8.0,
-            ),
-            Text(
-              'Search...',
-              style: inputPlaceholderText,
-            )
-          ],
+            isDense: true,
+            contentPadding: EdgeInsets.zero,
+          ),
         ),
       ),
     );
