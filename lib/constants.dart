@@ -102,6 +102,12 @@ final TextStyle darkInfoText = baseTextStyle.copyWith(
   color: primaryColors[400]!,
 );
 
+final TextStyle defaultText = baseTextStyle.copyWith(
+  fontSize: 16.0,
+  fontWeight: FontWeight.w500,
+  color: primaryColors[400]!,
+);
+
 // Light Theme Text Styles
 final TextStyle lightXLargeHeading = baseTextStyle.copyWith(
   fontSize: 32.0,
