@@ -3,9 +3,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_gallery_app/constants.dart';
 
 class CustomLargeButton extends StatelessWidget {
+  final bool withIcon;
   final String buttonText;
 
-  const CustomLargeButton({this.buttonText = "Button", super.key});
+  const CustomLargeButton({
+    required this.withIcon,
+    required this.buttonText,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +36,18 @@ class CustomLargeButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset(
-              'assets/icons/download.svg',
-            ),
-            SizedBox(
-              width: 12.0,
-            ),
+            this.withIcon
+                ? Row(
+                    children: [
+                      SvgPicture.asset(
+                        'assets/icons/download.svg',
+                      ),
+                      SizedBox(
+                        width: 12.0,
+                      ),
+                    ],
+                  )
+                : SizedBox(),
             Text(
               this.buttonText,
               style: largeButtonText,

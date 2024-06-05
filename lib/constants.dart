@@ -25,7 +25,19 @@ const TextStyle baseTextStyle = TextStyle(
   fontFamily: 'SFProDisplay',
 );
 
-final TextStyle placeholderText = baseTextStyle.copyWith(
+final TextStyle inputLabelText = baseTextStyle.copyWith(
+  fontSize: 14.0,
+  fontWeight: FontWeight.w500,
+  color: primaryColors[500],
+);
+
+final TextStyle inputPlaceholderText = baseTextStyle.copyWith(
+  fontSize: 14.0,
+  fontWeight: FontWeight.w500,
+  color: primaryColors[600],
+);
+
+final TextStyle searchPlaceholderText = baseTextStyle.copyWith(
   fontSize: 16.0,
   fontWeight: FontWeight.w500,
   color: primaryColors[600],

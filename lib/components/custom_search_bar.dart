@@ -35,7 +35,7 @@ class CustomSearchBar extends StatelessWidget {
             ),
             Text(
               'Search...',
-              style: placeholderText,
+              style: inputPlaceholderText,
             )
           ],
         ),

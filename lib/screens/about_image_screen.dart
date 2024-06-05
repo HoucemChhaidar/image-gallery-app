@@ -56,6 +56,7 @@ class AboutImageScreen extends StatelessWidget {
                     bottom: 5.0,
                   ),
                   child: CustomLargeButton(
+                    withIcon: true,
                     buttonText: "Download",
                   ),
                 ),
