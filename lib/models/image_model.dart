@@ -1,11 +1,11 @@
-class ImagesModel {
+class ImageModel {
   int? total;
   int? totalHits;
   List<Hits>? hits;
 
-  ImagesModel({this.total, this.totalHits, this.hits});
+  ImageModel({this.total, this.totalHits, this.hits});
 
-  ImagesModel.fromJson(Map<String, dynamic> json) {
+  ImageModel.fromJson(Map<String, dynamic> json) {
     total = json['total'];
     totalHits = json['totalHits'];
     if (json['hits'] != null) {
@@ -31,7 +31,7 @@ class Hits {
   int? id;
   String? pageURL;
   String? type;
-  String? tags;
+  List<String>? tags;
   String? previewURL;
   int? previewWidth;
   int? previewHeight;
@@ -80,7 +80,14 @@ class Hits {
     id = json['id'];
     pageURL = json['pageURL'];
     type = json['type'];
-    tags = json['tags'];
+    tags = (json['tags'] as String)
+        .split(',')
+        .map((tag) => tag.trim())
+        .map((tag) => tag
+            .split(' ')
+            .map((word) => word.replaceRange(0, 1, word[0].toUpperCase()))
+            .join(' '))
+        .toList();
     previewURL = json['previewURL'];
     previewWidth = json['previewWidth'];
     previewHeight = json['previewHeight'];
@@ -106,7 +113,7 @@ class Hits {
     data['id'] = id;
     data['pageURL'] = pageURL;
     data['type'] = type;
-    data['tags'] = tags;
+    data['tags'] = tags!.join(', ');
     data['previewURL'] = previewURL;
     data['previewWidth'] = previewWidth;
     data['previewHeight'] = previewHeight;

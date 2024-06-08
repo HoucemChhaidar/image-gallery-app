@@ -6,9 +6,16 @@ import 'package:image_gallery_app/components/dark_background.dart';
 import 'package:image_gallery_app/components/infos_list.dart';
 import 'package:image_gallery_app/components/tags_list.dart';
 import 'package:image_gallery_app/constants.dart';
+import 'package:image_gallery_app/models/image_data.dart';
+import 'package:image_gallery_app/screens/home_screen.dart';
 
 class AboutImageScreen extends StatelessWidget {
-  const AboutImageScreen({super.key});
+  final ImageData imageData;
+
+  AboutImageScreen({
+    super.key,
+    required this.imageData,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +23,15 @@ class AboutImageScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: primaryColors[900],
         toolbarHeight: 68.0,
-        title: CustomAppBar(appBarTitle: 'Delicious Cake'),
+        title: CustomAppBar(
+          onTap: () {
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => HomeScreen()),
+              (Route<dynamic> route) => false,
+            );
+          },
+        ),
       ),
       body: DarkBackground(
         child: Padding(
@@ -32,7 +47,7 @@ class AboutImageScreen extends StatelessWidget {
                 Container(
                   height: 400.0,
                   child: CardTile(
-                    imageIndex: 1,
+                    imageData: imageData,
                     iconSize: 16.0,
                     iconPadding: 16.0,
                     authorSize: 40.0,
@@ -43,11 +58,15 @@ class AboutImageScreen extends StatelessWidget {
                 SizedBox(
                   height: 24.0,
                 ),
-                TagsList(),
+                TagsList(tags: imageData.tags),
                 SizedBox(
                   height: 12.0,
                 ),
-                InfosList(),
+                InfosList(
+                  likes: imageData.likes,
+                  views: imageData.views,
+                  downloads: imageData.downloads,
+                ),
                 SizedBox(
                   height: 24.0,
                 ),

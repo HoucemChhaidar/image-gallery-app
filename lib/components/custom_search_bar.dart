@@ -1,9 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_gallery_app/constants.dart';
 
 class CustomSearchBar extends StatelessWidget {
-  const CustomSearchBar({super.key});
+  final Function(String) onChanged;
+
+  CustomSearchBar({super.key, required this.onChanged});
+
+  Timer? searchOnStoppedTyping;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +32,13 @@ class CustomSearchBar extends StatelessWidget {
           vertical: 20.0,
         ),
         child: TextField(
+          onChanged: (value) {
+            const duration = Duration(milliseconds: 800);
+            if (searchOnStoppedTyping != null) {
+              searchOnStoppedTyping!.cancel();
+            }
+            searchOnStoppedTyping = Timer(duration, () => onChanged(value));
+          },
           style: defaultText,
           decoration: InputDecoration(
             hintText: 'Search...',

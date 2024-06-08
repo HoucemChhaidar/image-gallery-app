@@ -2,7 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:image_gallery_app/components/info.dart';
 
 class InfosList extends StatelessWidget {
-  const InfosList({super.key});
+  final int likes;
+  final int views;
+  final int downloads;
+
+  const InfosList({
+    super.key,
+    required this.likes,
+    required this.views,
+    required this.downloads,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -11,21 +20,21 @@ class InfosList extends StatelessWidget {
       children: [
         Info(
           iconName: 'heart_filled',
-          infoStats: 758,
+          infoStats: likes,
         ),
         SizedBox(
           width: 24.0,
         ),
         Info(
           iconName: 'eye',
-          infoStats: 13364,
+          infoStats: views,
         ),
         SizedBox(
           width: 24.0,
         ),
         Info(
           iconName: 'downloads',
-          infoStats: 33,
+          infoStats: downloads,
         ),
       ],
     );

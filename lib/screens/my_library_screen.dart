@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:image_gallery_app/components/cards_tiles_list.dart';
 import 'package:image_gallery_app/components/custom_app_bar.dart';
 import 'package:image_gallery_app/components/dark_background.dart';
 import 'package:image_gallery_app/constants.dart';
@@ -13,7 +12,10 @@ class MyLibraryScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: primaryColors[900],
         toolbarHeight: 68.0,
-        title: CustomAppBar(appBarTitle: 'My Library'),
+        title: CustomAppBar(
+          appBarTitle: 'My Library',
+          onTap: () {},
+        ),
       ),
       body: DarkBackground(
         child: Padding(
@@ -23,8 +25,8 @@ class MyLibraryScreen extends StatelessWidget {
             right: 20.0,
           ),
           child: SingleChildScrollView(
-            child: CardsTilesList(),
-          ),
+              // child: CardsTilesList(),
+              ),
         ),
       ),
     );
